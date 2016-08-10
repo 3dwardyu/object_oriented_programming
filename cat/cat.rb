@@ -5,3 +5,6 @@ class Cat
     attr_accessor :meal_time
   end
 end
+
+rengar = Cat.new("Rengar", "dry foods", 15)
+teemo = Cat.new("Teemo", "mushrooms", 23)
