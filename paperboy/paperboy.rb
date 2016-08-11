@@ -23,27 +23,33 @@ class Paperboy
     xp = 0
     earn = 0
     ot = 0
-
+# checks if delivery in on even houses
     if side == "even"
     deliver = (ss..se).find_all { |n| n % 2 == 0}
     xp = deliver.length
+    #checks if delivered is the same as quota
       if xp == @quota
       earn = xp * 0.25
+      #adds overtime if delivered is above quota
       elsif xp > @quota
       earn = @quota * 0.25
       ot = (xp - @quota) * 0.50
+      # loses $2 if quota isn't met
       else
       earn = (xp * 0.25) - 2
       end
-
+# delivers to odd houses
     else
     deliver = (ss..se).find_all { |n| n % 2 == 0}
     xp = deliver.length
+    #checks if delivered is the same as quota
       if xp == @quota
       earn = xp * 0.25
+      #adds overtime if delivered is above quota
       elsif xp > @quota
       earn = @quota * 0.25
       ot = (xp - @quota) * 0.50
+      # loses $2 if quota isn't met
       else
       earn = (xp * 0.25) - 2
       end
