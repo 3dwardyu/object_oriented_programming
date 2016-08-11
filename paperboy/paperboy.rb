@@ -1,9 +1,7 @@
 class Paperboy
   # name, exp, side have read and write access
   # earnings is read only
-  attr_accessor :name
-  attr_accessor :exp
-  attr_accessor :side
+  attr_accessor :name, :exp, :side
   attr_reader :earnings
 
   # initialize paperboy with 4 variables
@@ -12,5 +10,17 @@ class Paperboy
     @exp = exp
     @side = side
     @earnings = earnings
-end
+  end
+
+  def quota
+    q = 50 + @exp/2
+  end
+
+  def deliver(street_start, street_end)
+
+  end
+
+  def report
+  end
+
 end
