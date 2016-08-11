@@ -36,7 +36,5 @@ end
 rengar = Cat.new("Rengar", "dry foods", 15)
 teemo = Cat.new("Teemo", "mushrooms", 13)
 
-teemo.eats_at
-rengar.eats_at
-
+rengar.meow
 teemo.meow
