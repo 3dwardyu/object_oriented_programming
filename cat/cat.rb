@@ -33,8 +33,10 @@ class Cat
   end
 end
 
+# creates two cat classes
 rengar = Cat.new("Rengar", "dry foods", 15)
 teemo = Cat.new("Teemo", "mushrooms", 13)
 
+# calls meow method to introduce the cats
 rengar.meow
 teemo.meow
