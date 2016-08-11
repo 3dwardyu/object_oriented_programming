@@ -10,43 +10,47 @@ class Paperboy
     @exp = exp
     @side = side
     @earnings = earnings
-    @quota = exp
+
   end
 
+# sets a quota variable to compare
   def quota
     @quota = 50 + @exp/2
     return @quota
   end
 
-  def deliver(street_start, street_end)
-    houses = []
+  def deliver(ss, se)
+    xp = 0
     earn = 0
-    ex = 0
-    # finds out how many houses are being delived to
-  if @side == "even"
-    houses = (street_start..street_end).find_all { |n| n % 2 == 0 }
-    exp = houses.length
-    if @exp <= @quota
-      earn = ex * 0.25
-    else
-      earn = (@quota + 0.25) + ((ex - @quota) * 0.50)
-    end
+    ot = 0
 
-  elsif side == "odd"
-    houses = (street_start..street_end).find_all { |n| n % 2 != 0 }
-    ex = houses.length
-    if @exp <= @quota
-      earn = ex * 0.25
-    else
-      earn += (@quota + 0.25) + ((ex - @quota) * 0.50)
-    end
+    if side == "even"
+    deliver = (ss..se).find_all { |n| n % 2 == 0}
+    xp = deliver.length
+      if xp == @quota
+      earn = xp * 0.25
+      elsif xp > @quota
+      earn = @quota * 0.25
+      ot = (xp - @quota) * 0.50
+      else
+      earn = (xp * 0.25) - 2
+      end
 
-  else
-    earn -= 2
+    else
+    deliver = (ss..se).find_all { |n| n % 2 == 0}
+    xp = deliver.length
+      if xp == @quota
+      earn = xp * 0.25
+      elsif xp > @quota
+      earn = @quota * 0.25
+      ot = (xp - @quota) * 0.50
+      else
+      earn = (xp * 0.25) - 2
+      end
+    end
+     @earnings += earn + ot
+     @exp += xp
   end
- @earnings += earn
- @exp += ex
-end
 
 
   def report
@@ -58,6 +62,6 @@ end
 tommy = Paperboy.new("Tommy", 0, "even", 0)
 
 tommy.quota
-tommy.deliver(101, 220)
+tommy.deliver(1, 20)
 tommy.earnings
 tommy.report
