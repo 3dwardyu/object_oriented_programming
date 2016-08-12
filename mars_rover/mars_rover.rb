@@ -1,11 +1,12 @@
 class Rover
-  attr_accessor :d, :x, :y
+  attr_accessor :dir, :x, :y
 
 
-  def initialize(x, y, d)
+  def initialize(x, y, dir)
+    #raise dir.inspect
     @x = x
     @y = y
-    @d = d
+    @dir = dir
   end
 
   def read_instructions(command)
@@ -19,12 +20,12 @@ class Rover
         self.turn(letter)
       end
     end
-    print "#{@x} #{@y} #{@d}"
+    print "#{@x} #{@y} #{@dir}"
 end
 
   def move
   # determines where on the grid the rover will move
-    case @d
+    case @dir
     when "N" then @y += 1
     when "E" then @x += 1
     when "S" then @y -= 1
@@ -34,36 +35,35 @@ end
 
   def turn(t)
     #determines which direction the rover will be facing
-    if t == "R" && @d == "N"
-      @d = "E"
-    elsif t == "R" && @d == "E"
-      @d = "S"
-    elsif t == "R" && @d == "S"
-      @d = "W"
-    elsif t == "R" && @d == "W"
-      @d = "N"
-    elsif t == "L" && @d == "N"
-        @d = "W"
-    elsif t == "L" && @d == "W"
-        @d = "S"
-    elsif t == "L" && @d == "S"
-        @d = "E"
-    elsif t == "L" && @d == "E"
-        @d = "N"
+    if t == "R" && @dir == "N"
+      @dir = "E"
+    elsif t == "R" && @dir == "E"
+      @dir = "S"
+    elsif t == "R" && @dir == "S"
+      @dir = "W"
+    elsif t == "R" && @dir == "W"
+      @dir = "N"
+    elsif t == "L" && @dir == "N"
+        @dir = "W"
+    elsif t == "L" && @dir == "W"
+        @dir = "S"
+    elsif t == "L" && @dirir == "S"
+        @dir = "E"
+    elsif t == "L" && @dir == "E"
+        @dir = "N"
       end
     end
 
     def position
-     print "#{@x} #{@y} #{@d}"
+     print "#{@x} #{@y} #{@dir}"
     end
 end
 
-
-
-
-doge = Rover.new(Integer(gets), Integer(gets), gets)
+#gets the size of the plateau
+size = gets
+#asks for input for Rover 1
+doge = Rover.new(Integer(gets), Integer(gets), gets.chomp)
 doge.read_instructions(gets)
-# doge.position
-# walle = Rover.new(gets, gets, gets)
-# walle.read_instructions(gets)
-# walle.position
+#asks for input for Rover 2
+walle = Rover.new(Integer(gets), Integer(gets), gets.chomp)
+walle.read_instructions(gets)
