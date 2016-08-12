@@ -1,5 +1,6 @@
 class Rover
-  attr_accessor :x, :y, :d
+  attr_accessor :d, :x, :y
+
 
   def initialize(x, y, d)
     @x = x
@@ -9,24 +10,16 @@ class Rover
 
   def read_instructions(command)
 
-  instruct = command.split(//)
-    instruct.each do |letter|
-
-      # if the array contains "M" it'll run move method and move one position
+      command.split("").each do |letter|
+      # moves the rover
       if letter == "M"
-        self.move(@d)
-      # if the array contains "R" or "L" it'll run turn method with the correct direction
-    elsif letter == "R" || letter == "L"
+        self.move
+      # turns the rover left or right
+      elsif letter == "R" || letter == "L"
         self.turn(letter)
-      #if it doesn't read letters other than "M, R or L" it will assume you are giving cordinates for the rover
-      else
-        @x = instruct[0]
-        @y = instruct[1]
-        @d = instruct[2]
       end
-
     end
-    puts "#{@x} #{@y} #{@d}"
+    print "#{@x} #{@y} #{@d}"
 end
 
   def move
@@ -37,7 +30,6 @@ end
     when "S" then @y -= 1
     when "W" then @x -= 1
     end
-
   end
 
   def turn(t)
@@ -57,15 +49,21 @@ end
     elsif t == "L" && @d == "S"
         @d = "E"
     elsif t == "L" && @d == "E"
-        @d = "W"
+        @d = "N"
       end
+    end
+
+    def position
+     print "#{@x} #{@y} #{@d}"
     end
 end
 
 
 
-size = gets
-doge = Rover.new(gets, gets, gets)
+
+doge = Rover.new(Integer(gets), Integer(gets), gets)
 doge.read_instructions(gets)
-walle = Rover.new(gets, gets, gets)
-walle.read_instructions(gets)
+# doge.position
+# walle = Rover.new(gets, gets, gets)
+# walle.read_instructions(gets)
+# walle.position

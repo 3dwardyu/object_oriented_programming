@@ -15,7 +15,7 @@ class Paperboy
   # sets a quota variable to compare
   def quota
     @quota = 50 + @exp/2
-    return @quota
+    
   end
 
   def deliver(ss, se)
