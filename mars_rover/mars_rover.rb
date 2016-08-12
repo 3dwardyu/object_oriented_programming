@@ -42,26 +42,24 @@ end
 
   def turn(t)
     #determines which direction the rover will be facing
-    case t
-    when "R"
-      case @d
-      when "N" then @d = "E"
-      when "E" then @d = "S"
-      when "S" then @d = "W"
-      else @d = "N"
+    if t == "R" && @d == "N"
+      @d = "E"
+    elsif t == "R" && @d == "E"
+      @d = "S"
+    elsif t == "R" && @d == "S"
+      @d = "W"
+    elsif t == "R" && @d == "W"
+      @d = "N"
+    elsif t == "L" && @d == "N"
+        @d = "W"
+    elsif t == "L" && @d == "W"
+        @d = "S"
+    elsif t == "L" && @d == "S"
+        @d = "E"
+    elsif t == "L" && @d == "E"
+        @d = "W"
       end
-
-    else
-      case @d
-      when "N" then @d = "W"
-      when "W" then @d = "S"
-      when "S" then @d = "E"
-      else @d = "N"
-      end
-
     end
-
-  end
 end
 
 
