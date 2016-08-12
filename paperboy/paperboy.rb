@@ -10,10 +10,9 @@ class Paperboy
     @exp = exp
     @side = side
     @earnings = earnings
-
   end
 
-# sets a quota variable to compare
+  # sets a quota variable to compare
   def quota
     @quota = 50 + @exp/2
     return @quota
@@ -23,8 +22,8 @@ class Paperboy
     xp = 0
     earn = 0
     ot = 0
-# checks if delivery in on even houses
-    if side == "even"
+    # checks if delivery in on even houses
+    if @side == "even"
     deliver = (ss..se).find_all { |n| n % 2 == 0}
     xp = deliver.length
     #checks if delivered is the same as quota
@@ -38,11 +37,11 @@ class Paperboy
       else
       earn = (xp * 0.25) - 2
       end
-# delivers to odd houses
+    # delivers to odd houses
     else
     deliver = (ss..se).find_all { |n| n % 2 == 0}
     xp = deliver.length
-    #checks if delivered is the same as quota
+      #checks if delivered is the same as quota
       if xp == @quota
       earn = xp * 0.25
       #adds overtime if delivered is above quota
@@ -58,15 +57,12 @@ class Paperboy
      @exp += xp
   end
 
-
   def report
     puts "I'm #{@name}, I've delivered #{@exp} papers and I've earned #{@earnings} so far!"
   end
-
 end
 
 tommy = Paperboy.new("Tommy", 0, "even", 0)
-
 tommy.quota
 tommy.deliver(101, 220)
 tommy.earnings
